@@ -906,24 +906,6 @@ Week 7 — Hardening + Integration Testing
 
 ---
 
-## 📞 Continuing This Project in a New AI Session
-
-Paste this into your next session to continue exactly where you left off:
-
-```
-I am building NeoBank — an AI-powered banking platform.
-Tech: Java 25, Spring Boot 3.3, Kafka KRaft, Cassandra 5,
-Spring AI with Ollama (mistral + llama3.2), GraphQL, Docker.
-
-Services: account(8081) transaction(8082) fraud(8083)
-advisor(8084) notification(8085) ledger(8086) gateway(8080)
-
-Flow: POST /transfers → PENDING → Kafka → Fraud AI →
-APPROVED/BLOCKED → COMPLETED/FAILED → Notifications + Audit
-
-What I have done so far: [describe your progress]
-What I need help with next: [describe what you need]
-```
 
 ---
 
