@@ -68,14 +68,14 @@ Infrastructure:
 | Technology | Version | Purpose |
 |---|---|---|
 | Java | 25 | Language |
-| Spring Boot | 3.3.0 | Application framework |
+| Spring Boot | 4.0.x | Application framework |
 | Apache Kafka | 3.7.0 (KRaft) | Event streaming — no Zookeeper |
 | Apache Cassandra | 5.0 | Time-series database |
 | Spring AI | 1.0.0 | AI integration framework |
 | Ollama | latest | Local AI model runner — free |
 | mistral | latest | Fraud detection AI (3.8GB) |
 | llama3.2 | latest | Financial advisor AI (2.0GB) |
-| Spring for GraphQL | 3.3.0 | API Gateway |
+| Spring for GraphQL | 4.0.x | API Gateway |
 | Docker | latest | Containerization |
 | Local Registry | localhost:5000 | Private Docker registry |
 
