@@ -1,0 +1,13 @@
+package com.learning.springai.frauddetectionservice;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class FrauddetectionserviceApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(FrauddetectionserviceApplication.class, args);
+	}
+
+}
