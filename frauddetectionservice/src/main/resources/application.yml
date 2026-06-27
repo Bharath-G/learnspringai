@@ -1,0 +1,70 @@
+spring:
+  application:
+    name: fraud-detection-service
+
+  # ── Cassandra ──────────────────────────────────────
+  cassandra:
+    contact-points: localhost
+    port: 9042
+    keyspace-name: neobank
+    local-datacenter: datacenter1
+    schema-action: NONE   # never auto create — we manage schema manually
+
+  # ── Kafka ──────────────────────────────────────────
+  kafka:
+    bootstrap-servers: localhost:9092
+
+    consumer:
+      group-id: fraud-detection-service
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "com.neobank.events"
+        spring.json.use.type.headers: false
+        max.poll.records: 10           # process 10 messages at a time
+        max.poll.interval.ms: 300000   # 5 min — AI calls can be slow
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: all
+      retries: 3
+      properties:
+        enable.idempotence: true
+
+    listener:
+      ack-mode: MANUAL_IMMEDIATE
+      concurrency: 3   # 3 threads — one per partition
+
+  # ── Spring AI — Ollama ─────────────────────────────
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        model: mistral          # best for structured JSON output
+        options:
+          temperature: 0.1      # low = more deterministic, less creative
+          # fraud detection needs consistent output
+          num-predict: 500      # max tokens in AI response
+          top-p: 0.9
+
+# ── Actuator ───────────────────────────────────────
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+
+server:
+  port: 8083
+
+logging:
+  level:
+    com.neobank: DEBUG
+    org.springframework.ai: DEBUG   # see AI prompts and responses
+    org.springframework.kafka: INFO

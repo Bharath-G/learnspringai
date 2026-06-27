@@ -95,7 +95,7 @@
 
 		<!-- Shared Events -->
 		<dependency>
-			<groupId>com.neobank</groupId>
+			<groupId>com.neobank.events</groupId>
 			<artifactId>shared-events</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>

@@ -13,7 +13,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.neobank</groupId>
+    <groupId>com.neobank.events</groupId>
     <artifactId>shared-events</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
